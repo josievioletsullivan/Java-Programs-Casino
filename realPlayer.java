@@ -6,6 +6,10 @@ public class realPlayer extends player{
     public realPlayer(){
         balance = 1000;
     }
+	void makeWager(int input){
+		wager = input;
+		balance -= input;
+	}
     boolean doubleDown(Deck cardDeck){
         hit(cardDeck);
         wager*=2;
