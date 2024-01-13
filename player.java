@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public abstract class player {
     ArrayList<Card> hand = new ArrayList<Card>();
     public player(){
-        
+        testing
     }
     int handValue(){
         int handValue = 0;
