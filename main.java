@@ -19,6 +19,7 @@ public class main{
     }
 	void playerTurn(){
 		boolean gamePlay = true;
+		makeWager(100); //replace 100 with inputDevice.nextInt();
         while(gamePlay = true){
             switch(inputScanner()){ //input will be implemented later
                 case 1: user.hit(cardDeck);
