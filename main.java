@@ -7,6 +7,7 @@ public class main{
     house mrHouse = new house();
 	public static void main(String[] args) {
         playerTurn();
+		houseTurn();
 	}
     void draw(){
         user.hand.add(cardDeck.deck.get(cardDeck.deck.size()-1));
@@ -33,7 +34,26 @@ public class main{
 	}
 	void houseTurn(){
 		while(mrHouse.cardValue < 17){
-			mrHouse.hit();
+			mrHouse.hit(cardDeck);
+		}
+	}
+	void evaluateGame(){
+		if(user.cardValue>mrHouse.cardValue){
+			user.balance+=user.wager*2;
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
