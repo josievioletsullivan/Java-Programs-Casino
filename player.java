@@ -14,6 +14,7 @@ public abstract class player {
     }
     void hit(Deck cardDeck){
         hand.add(cardDeck.deck.get(cardDeck.deck.size()-1));
+        cardDeck.deck.remove(cardDeck.deck.size()-1);
     }
     boolean stand = false;
 }

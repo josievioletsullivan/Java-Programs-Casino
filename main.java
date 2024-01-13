@@ -1,20 +1,18 @@
 package Casino;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 public class main{
     static Deck cardDeck = new Deck();
     int size = cardDeck.deck.size();
     static realPlayer user = new realPlayer();
-   
+    static Screen Screen = new Screen();
     house mrHouse = new house();
 	public static void main(String[] args) {
-        Screen Screen = new Screen();
         playerTurn();
 		houseTurn();
 	}
-    void draw(){
-        user.hand.add(cardDeck.deck.get(cardDeck.deck.size()-1));
-    }
     void debugDeck(){
         for(int x = 0; x < size; x++){
             System.out.print(cardDeck.deck.get(x).suit);
@@ -47,17 +45,3 @@ public class main{
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
