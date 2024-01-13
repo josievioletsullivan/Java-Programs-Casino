@@ -1,3 +1,4 @@
+import javax.swing.*;
 public class ChoiceBox{
     int leftBound, rightBound, topBound, bottomBound, function;
     public ChoiceBox(int position, int screenWidth, int boxCount){//creates a box at a position from the left side. all boxes are equal width and height

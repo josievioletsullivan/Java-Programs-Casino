@@ -1,11 +1,14 @@
 package Casino;
+import javax.swing.*;
 import java.util.ArrayList;
 public class main{
     static Deck cardDeck = new Deck();
     int size = cardDeck.deck.size();
     static realPlayer user = new realPlayer();
+   
     house mrHouse = new house();
 	public static void main(String[] args) {
+        Screen Screen = new Screen();
         playerTurn();
 		houseTurn();
 	}
