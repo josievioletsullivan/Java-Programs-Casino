@@ -6,7 +6,18 @@ public class main{
     static realPlayer user = new realPlayer();
     house mrHouse = new house();
 	public static void main(String[] args) {
-        boolean gamePlay = true;
+        playerTurn();
+	}
+    void draw(){
+        user.hand.add(cardDeck.deck.get(cardDeck.deck.size()-1));
+    }
+    void debugDeck(){
+        for(int x = 0; x < size; x++){
+            System.out.print(cardDeck.deck.get(x).suit);
+        }
+    }
+	void playerTurn(){
+		boolean gamePlay = true;
         while(gamePlay = true){
             switch(inputScanner()){ //input will be implemented later
                 case 1: user.hit(cardDeck);
@@ -20,12 +31,9 @@ public class main{
             }
         }
 	}
-    void draw(){
-        user.hand.add(cardDeck.deck.get(cardDeck.deck.size()-1));
-    }
-    void debugDeck(){
-        for(int x = 0; x < size; x++){
-            System.out.print(cardDeck.deck.get(x).suit);
-        }
-    }
+	void houseTurn(){
+		while(mrHouse.cardValue < 17){
+			mrHouse.hit();
+		}
+	}
 }
