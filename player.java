@@ -12,10 +12,10 @@ public abstract class player {
             }
         return handValue;
     }
-    void hit(Deck cardDeck){
-        hand.add(cardDeck.deck.get(cardDeck.deck.size()-1));
-        cardDeck.deck.remove(cardDeck.deck.size()-1);
+    void hit(ArrayList hand, ArrayList deck){
+        hand.add(deck.get(deck.size()-1));
+        deck.remove(deck.size()-1);
     }
     boolean stand = false;
-    abstract void turn(Deck cardDeck);
+    abstract void turn(ArrayList deck);
 }

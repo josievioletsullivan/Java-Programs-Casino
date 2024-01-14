@@ -39,7 +39,10 @@ public class Screen{
 	    }
 	    return 0; //triggers the default case
 	}
-	void redraw(){
+	void redraw(JFrame aFrame){
+		aFrame.removeAll();
+		aFrame.revalidate();
+		aFrame.repaint();
 		//clears the screen
 		//redraws the screen every time an event happens
 	}

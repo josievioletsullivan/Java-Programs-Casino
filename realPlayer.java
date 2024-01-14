@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class realPlayer extends player{
     int balance;
@@ -10,25 +10,25 @@ public class realPlayer extends player{
 		wager = input;
 		balance -= input;
 	}
-    boolean doubleDown(Deck cardDeck){
+    boolean doubleDown(ArrayList cardDeck){
         hit(cardDeck);
         wager*=2;
         return stand;
     }
-    boolean surrender(Deck cardDeck){
+    boolean surrender(ArrayList cardDeck){
         wager=0;
         return stand;
     }
-    void turn(Deck cardDeck){
+    void turn(ArrayList deck){
         boolean gamePlay = true;
 		makeWager(100); //replace 100 with inputDevice.nextInt();
         while(gamePlay = true){
             switch(1){ //input will be implemented later
-                case 1: hit(cardDeck);
+                case 1: hit(hand, deck);
                 case 2: gamePlay = stand;
-                case 3: doubleDown(cardDeck);
+                case 3: doubleDown(deck);
                 // We removed split it would be option # 4
-                case 5: gamePlay = surrender(cardDeck);
+                case 5: gamePlay = surrender(deck);
             }
             if(handValue()>21){
                 gamePlay = false;
