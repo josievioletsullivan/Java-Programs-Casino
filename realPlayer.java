@@ -1,4 +1,4 @@
-package Casino;
+
 
 public class realPlayer extends player{
     int balance;
@@ -18,5 +18,21 @@ public class realPlayer extends player{
     boolean surrender(Deck cardDeck){
         wager=0;
         return stand;
+    }
+    void turn(Deck cardDeck){
+        boolean gamePlay = true;
+		makeWager(100); //replace 100 with inputDevice.nextInt();
+        while(gamePlay = true){
+            switch(1){ //input will be implemented later
+                case 1: hit(cardDeck);
+                case 2: gamePlay = stand;
+                case 3: doubleDown(cardDeck);
+                // We removed split it would be option # 4
+                case 5: gamePlay = surrender(cardDeck);
+            }
+            if(handValue()>21){
+                gamePlay = false;
+            }
+        }
     }
 }

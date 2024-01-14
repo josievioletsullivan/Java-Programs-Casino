@@ -1,4 +1,4 @@
-package Casino;
+
 
 public class Card {
     String suits[] = {"Hearts","Diamonds","Clubs","Spades"}; //these are clubs, hearts, spades, and diamonds in their purest forms

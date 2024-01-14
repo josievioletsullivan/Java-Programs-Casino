@@ -1,4 +1,4 @@
-package Casino;
+
 import java.util.ArrayList;
 public abstract class player {
     ArrayList<Card> hand = new ArrayList<Card>();
@@ -17,4 +17,5 @@ public abstract class player {
         cardDeck.deck.remove(cardDeck.deck.size()-1);
     }
     boolean stand = false;
+    abstract void turn(Deck cardDeck);
 }
