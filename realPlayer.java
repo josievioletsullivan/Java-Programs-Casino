@@ -10,12 +10,12 @@ public class realPlayer extends player{
 		wager = input;
 		balance -= input;
 	}
-    boolean doubleDown(ArrayList cardDeck){
-        hit(cardDeck);
+    boolean doubleDown(ArrayList deck){
+        hit(hand, deck);
         wager*=2;
         return stand;
     }
-    boolean surrender(ArrayList cardDeck){
+    boolean surrender(){
         wager=0;
         return stand;
     }
@@ -28,7 +28,7 @@ public class realPlayer extends player{
                 case 2: gamePlay = stand;
                 case 3: doubleDown(deck);
                 // We removed split it would be option # 4
-                case 5: gamePlay = surrender(deck);
+                case 5: gamePlay = surrender();
             }
             if(handValue()>21){
                 gamePlay = false;

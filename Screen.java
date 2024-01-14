@@ -2,13 +2,13 @@
 import java.awt.FlowLayout;
 import java.awt.event.*;
 import javax.swing.*;
-public class Screen{
+public abstract class Screen{
 	static int screenHeight;
 	static int screenWidth;
 	int boxCount = 4;
 	JLabel boxJLabels[] = new JLabel[boxCount];
 	String[] boxLabels = {"Hit","Stand","Double Down","Surrender"}; 
-	ChoiceBox[] Boxes = new ChoiceBox[boxCount];
+	//ChoiceBox[] Boxes = new ChoiceBox[boxCount];
 	JButton[] Buttons = new JButton[boxCount];
 	public Screen(){
 	    screenHeight = 1080; //default values. Will probably change to a different value later
@@ -23,20 +23,12 @@ public class Screen{
 	}
 	void createBoxes(JFrame aFrame){
 	    for(int i = 0; i < boxCount; i++){
-	        Boxes[i] = new ChoiceBox(i,screenWidth, screenHeight,4); //good chance says I'll get rid of choice boxes. I thought I'd have to draw these myself. Thank God.
+	        //Boxes[i] = new ChoiceBox(i,screenWidth, screenHeight,4); //good chance says I'll get rid of choice boxes. I thought I'd have to draw these myself. Thank God.
 			Buttons[i] = new JButton(boxLabels[i]);
-			boxJLabels[i] = new JLabel(boxLabels[i]);
-			aFrame.add(boxJLabels[i]);
+			//boxJLabels[i] = new JLabel(boxLabels[i]);
+			//aFrame.add(boxJLabels[i]);
 			aFrame.add(Buttons[i]);
 	    }
-	}
-	int checkClick(int x, int y){
-	    for(ChoiceBox i : Boxes){
-	        if(i.checkClick(x,y)==true){
-	            return i.function;
-	        }
-	    }
-	    return 0; //triggers the default case
 	}
 	void redraw(JFrame aFrame){
 		aFrame.removeAll();
@@ -50,6 +42,14 @@ public class Screen{
 		JTextField wagField = new JTextField(12);
 		aFrame.add(wager);
 		aFrame.add(wagField);
+	}
+	void gamePlayScreen(realPlayer P, house H){
+		for(int i = 0; i < P.hand.size(); i++){
+			//create card at low position
+		}
+		for(int i = 0; i < H.hand.size(); i++){
+			//create card at high position
+		}
 	}
 }
 
