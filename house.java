@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 public class house extends player {
-    void turn(Deck cardDeck){
+    void turn(ArrayList deck){
         while(handValue() < 17){
-			hit(cardDeck);
+			hit(hand, deck);
 		}
     }
 }

@@ -13,7 +13,6 @@ public class Screen{
 	public Screen(){
 	    screenHeight = 1080; //default values. Will probably change to a different value later
 	    screenWidth = 1920;
-	    Mouse Mouse = new Mouse(screenHeight);
 		JFrame aFrame = new JFrame("Blackjack");
         aFrame.setSize(Screen.screenWidth,Screen.screenHeight);
         aFrame.setVisible(true);
