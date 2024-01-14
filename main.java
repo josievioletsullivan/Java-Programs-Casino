@@ -10,8 +10,8 @@ public class main{
     static Screen Screen = new Screen();
     static house mrHouse = new house();
 	public static void main(String[] args) {
-        user.turn(cardDeck);
-		mrHouse.turn(cardDeck);
+        //user.turn(cardDeck);
+		//mrHouse.turn(cardDeck);
 	}
     void debugDeck(){
         for(int x = 0; x < size; x++){
