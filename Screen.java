@@ -21,16 +21,15 @@ public class Screen extends JFrame{
 		Board board = new Board();
 		setContentPane(board);
 		gameStartScreen();
-		createBoxes();
 	}
 	void createBoxes(){
 	    for(int i = 0; i < boxCount; i++){
 	        //Boxes[i] = new ChoiceBox(i,screenWidth, screenHeight,4); //good chance says I'll get rid of choice boxes. I thought I'd have to draw these myself. Thank God.
 			Buttons[i] = new JButton(boxLabels[i]);
-			//Buttons[i].setLocation();
+			Buttons[i].setBounds(0,0,screenWidth,screenHeight);
 			//boxJLabels[i] = new JLabel(boxLabels[i]);
 			//add(boxJLabels[i]);
-			add(Buttons[i],0,i*screenHeight/boxCount);
+			add(Buttons[i],i*100,i);
 	    }
 	}
 	void redraw(){
@@ -56,6 +55,7 @@ public class Screen extends JFrame{
 	}
 	public class Board extends JPanel{ //I'm following Jon's youtube tutorial (episode 2) on how to do this
 		public void paintComponent(Graphics g){
+			setLayout(null);
 			g.setColor(colorBackground);
 			g.fillRect(0,0,screenWidth,screenHeight);
 		}

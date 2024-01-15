@@ -5,7 +5,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 public class main{
     static realPlayer user = new realPlayer();
-    static Screen Screen = new Screen();
+    //static Screen Screen = new Screen();
+    static MenuGUI MenuGUI = new MenuGUI();
     static house mrHouse = new house();
     static ArrayList<Card> deck = new ArrayList<Card>();
 	public static void main(String[] args) {
