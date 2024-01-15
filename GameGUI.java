@@ -10,12 +10,12 @@ import javax.swing.JLabel;
  *
  * @author william
  */
-public class MenuGUI extends javax.swing.JFrame {
+public class GameGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuGUI
      */
-    public MenuGUI() {
+    public GameGUI() {
         initComponents();
     }
 
