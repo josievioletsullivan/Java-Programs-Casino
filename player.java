@@ -16,6 +16,11 @@ public abstract class player {
         hand.add(deck.get(deck.size()-1));
         deck.remove(deck.size()-1);
     }
+    void didTheyBust(){
+        if (handValue()>21) {
+            
+        }
+    }
     boolean stand = false;
     abstract void turn(ArrayList deck);
 }

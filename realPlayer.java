@@ -7,6 +7,7 @@ public class realPlayer extends player{
         balance = 1000;
     }
 	void makeWager(int input){
+
 		wager = input;
 		balance -= input;
 	}
