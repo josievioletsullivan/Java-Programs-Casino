@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class main {
     private static realPlayer user = new realPlayer();
-    private static house mrHouse = new house();
     static ArrayList<Card> deck = new ArrayList<>();
+    private static house mrHouse = new house();
     private static JTextArea textArea;
     static void createDeck(){
         //creates the deck by adding 52 cards
-        for(int x = 0; x<13; x++){
+        for(int x = 0; x<12; x++){
             for(int y = 0; y < 4; y++){
                 deck.add(new Card(y,x));
             }
@@ -19,6 +19,7 @@ public class main {
     }
     public static void main(String[] args) {
         createDeck();
+        mrHouse.hit(mrHouse.hand, deck);
         SwingUtilities.invokeLater(() -> {
             createAndShowGUI();
         });
@@ -28,7 +29,6 @@ public class main {
         JFrame frame = new JFrame("Blackjack Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-
         JPanel buttonPanel = createButtonPanel();
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -37,12 +37,26 @@ public class main {
         JScrollPane scrollPane = new JScrollPane(textArea);
         frame.add(scrollPane, BorderLayout.CENTER);
 
+        JPanel labelPanel = createLabelPanel();
+        frame.add(labelPanel, BorderLayout.EAST);
+
         frame.setSize(400, 300);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
     }
-
+    private static JPanel createLabelPanel(){
+        JPanel panel = new JPanel(new GridLayout(4, 1));
+        JLabel playerBalance = new JLabel("Balance: "+user.balance+" chips");
+        JLabel playerWager = new JLabel("Wager: "+user.wager+" chips");
+        JLabel playerHand = new JLabel("Hand Value: "+user.handValue());;
+        JLabel HouseHand = new JLabel("House Card: "+mrHouse.hand.get(0).getCardName());
+        panel.add(playerBalance);
+        panel.add(playerWager);
+        panel.add(playerHand);
+        panel.add(HouseHand);
+        return panel;
+    }
     private static JPanel createButtonPanel() {
         JPanel panel = new JPanel(new GridLayout(1, 4));
 
@@ -67,7 +81,7 @@ public class main {
 
     private static void hitButton(String action) {
         user.hit(user.hand,deck);
-        textArea.append(action + "! Your card total is now " +user.handValue()+ "\n");
+        textArea.append(action + "! You drew "+ user.hand.get(0).getCardName()+ "\n");
     }
     private static void standButton(String action) {
         //TODO: make user.stand toggle the game ending

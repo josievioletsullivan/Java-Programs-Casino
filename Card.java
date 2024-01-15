@@ -11,7 +11,7 @@ public class Card {
         face = faceNum;
         hidden = true;
     }
-    public String getCardName() {
-    	return faces[face] + " " + suits[suit];
+    public String getCardName(){
+    	return faces[face] + " of " + suits[suit];
     }
 }

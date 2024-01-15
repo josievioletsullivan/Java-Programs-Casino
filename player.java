@@ -13,8 +13,9 @@ public abstract class player {
         return handValue;
     }
     void hit(ArrayList hand, ArrayList deck){
-        hand.add(deck.get(deck.size()-1));
+        hand.add(0,deck.get(deck.size()-1));
         deck.remove(deck.size()-1);
+        
     }
     void didTheyBust(){
         if (handValue()>21) {
