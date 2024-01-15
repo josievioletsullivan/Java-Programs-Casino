@@ -3,18 +3,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class main {
     private static realPlayer user = new realPlayer();
     static ArrayList<Card> deck = new ArrayList<>();
     private static house mrHouse = new house();
+    private static JLabel playerBalance; //This block of code was instructed by chatGPT. I originally had these within the JFrame, and couldn't figure
+    private static JLabel playerWager; // out how to get them to update
+    private static JLabel playerHand;
+    private static JLabel HouseHand;
     private static JTextArea textArea;
     static void createDeck(){
         //creates the deck by adding 52 cards
-        for(int x = 0; x<12; x++){
-            for(int y = 0; y < 4; y++){
+        for(int x = 0; x<12; x++){ //12 Faces
+            for(int y = 0; y < 4; y++){ //4 Suits
                 deck.add(new Card(y,x));
             }
+            Collections.shuffle(deck); //shuffling with collections because I don't want to write a shuffler --Will
         }
     }
     public static void main(String[] args) {
@@ -47,10 +53,12 @@ public class main {
     }
     private static JPanel createLabelPanel(){
         JPanel panel = new JPanel(new GridLayout(4, 1));
-        JLabel playerBalance = new JLabel("Balance: "+user.balance+" chips");
-        JLabel playerWager = new JLabel("Wager: "+user.wager+" chips");
-        JLabel playerHand = new JLabel("Hand Value: "+user.handValue());;
-        JLabel HouseHand = new JLabel("House Card: "+mrHouse.hand.get(0).getCardName());
+
+        playerBalance = new JLabel("Balance: "+user.balance+" chips");
+        playerWager = new JLabel("Wager: "+user.wager+" chips");
+        playerHand = new JLabel("Hand Value: "+user.handValue());;
+        HouseHand = new JLabel("House Card: "+mrHouse.hand.get(0).getCardName());
+
         panel.add(playerBalance);
         panel.add(playerWager);
         panel.add(playerHand);
@@ -78,7 +86,14 @@ public class main {
 
         return panel;
     }
-
+    private void updateLabels(){
+        SwingUtilities.invokeLater(() -> { //This was also instructed by chatGPT. I had no clue about invokeLater, and this came up in my quest to find out
+        playerBalance.setText("Balance: "+user.balance+" chips"); //how to update individual components of the GUI
+        playerWager.setText("Wager: "+user.wager+" chips");
+        playerHand.setText("Hand Value: "+user.handValue());
+        HouseHand.setText("House Card: "+mrHouse.hand.get(0).getCardName());
+        });
+    }
     private static void hitButton(String action) {
         user.hit(user.hand,deck);
         textArea.append(action + "! You drew "+ user.hand.get(0).getCardName()+ "\n");
@@ -95,6 +110,4 @@ public class main {
         user.surrender();
         textArea.append(action + "! Your card total is now " +user.handValue()+ "\n");
     }
-    // Rest of your code remains unchanged
-    // ...
 }
