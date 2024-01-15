@@ -1,0 +1,1 @@
+Run everything from main! That's where the good stuff is. Player is an abstract class -- realPlayer and house extend it. Card is just an object in the arraylist deck. I don't know how cardGUI works. main was partially written by CHATGPT. Screen will probably be deleted it isn't real.
