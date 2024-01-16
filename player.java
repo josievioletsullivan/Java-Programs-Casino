@@ -8,7 +8,7 @@ public abstract class player {
     int handValue(){
         int handValue = 0;
         for(int x = 0; x<hand.size(); x++){
-                handValue += hand.get(x).face;
+                handValue += hand.get(x).face+2;
             }
         return handValue;
     }

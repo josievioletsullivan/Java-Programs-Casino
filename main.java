@@ -46,7 +46,7 @@ public class main {
         JPanel labelPanel = createLabelPanel();
         frame.add(labelPanel, BorderLayout.EAST);
 
-        frame.setSize(400, 300);
+        frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
@@ -115,7 +115,10 @@ public class main {
     private static void endGame(){
         if(user.handValue()<=21){
             mrHouse.turn(deck);
-            textArea.append("House drew a "+mrHouse.hand.get(mrHouse.hand.size()-1).getCardName()+"! ");
+            String houseCards;
+            for(int i = 1; i < mrHouse.hand.size(); i++){
+                textArea.append("House drew a "+mrHouse.hand.get(i).getCardName()+"!"+"\n");
+            }
             if(mrHouse.handValue()>user.handValue()&&mrHouse.handValue()<=21){
                 textArea.append("House wins! ");
             }else if(mrHouse.handValue()>21){
