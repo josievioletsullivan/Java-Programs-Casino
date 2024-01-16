@@ -86,7 +86,7 @@ public class main {
 
         return panel;
     }
-    private void updateLabels(){
+    private static void updateLabels(){
         SwingUtilities.invokeLater(() -> { //This was also instructed by chatGPT. I had no clue about invokeLater, and this came up in my quest to find out
         playerBalance.setText("Balance: "+user.balance+" chips"); //how to update individual components of the GUI
         playerWager.setText("Wager: "+user.wager+" chips");
@@ -97,17 +97,37 @@ public class main {
     private static void hitButton(String action) {
         user.hit(user.hand,deck);
         textArea.append(action + "! You drew "+ user.hand.get(0).getCardName()+ "\n");
+        updateLabels();
     }
     private static void standButton(String action) {
-        //TODO: make user.stand toggle the game ending
-        textArea.append(action + "! Your card total is now " +user.handValue()+ "\n");
+        endGame();
     }
     private static void doubleDownButton(String action) {
         user.doubleDown(deck);
         textArea.append(action + "! Your card total is now " +user.handValue()+ "\n");
+        endGame();
     }
     private static void surrenderButton(String action) {
         user.surrender();
-        textArea.append(action + "! Your card total is now " +user.handValue()+ "\n");
+        textArea.append("Player surrenders!");
+        updateLabels();
+    }
+    private static void endGame(){
+        if(user.handValue()<=21){
+            mrHouse.turn(deck);
+            textArea.append("House drew a "+mrHouse.hand.get(mrHouse.hand.size()-1).getCardName()+"! ");
+            if(mrHouse.handValue()>user.handValue()&&mrHouse.handValue()<=21){
+                textArea.append("House wins! ");
+            }else if(mrHouse.handValue()>21){
+                textArea.append("House busts! Player wins!");
+            }else if(user.handValue()>mrHouse.handValue()){
+                textArea.append("Player Wins!");
+            }else if(user.handValue()==mrHouse.handValue()){
+                textArea.append("Player and House tie!");
+            }
+        }else{
+            textArea.append("Player busts!");
+        }
+        updateLabels();
     }
 }
